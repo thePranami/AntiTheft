@@ -10,9 +10,7 @@
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -24,8 +22,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden">  // use for hide auto keyboard on launching activity
+        <activity android:name=".MusicActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
+            // use for hide auto keyboard on launching activity
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,15 +34,16 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".AndroidServiceStartOnBoot" />
-
-        <receiver android:name=".SimChangeReceiver">
+        <service android:name=".AndroidServiceStartOnBoot" /> <!-- <receiver android:name=".SimChangeReceiver"> -->
+        <!-- <intent-filter> -->
+        <!-- &lt;!&ndash; <action android:name="android.intent.action.SIM_STATE_CHANGED"/> &ndash;&gt; -->
+        <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
+        <!-- <category android:name="android.intent.category.HOME" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+        <receiver android:name=".OutgoingCallReceiver">
             <intent-filter>
-
-                <!-- <action android:name="android.intent.action.SIM_STATE_CHANGED"/> -->
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-
-                <category android:name="android.intent.category.HOME" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
             </intent-filter>
         </receiver>
 
@@ -50,7 +52,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationForm" />
         <activity android:name=".ChangePassword" />
-        <activity android:name=".ForgetPassword"></activity>
+        <activity android:name=".ForgetPassword" />
     </application>
 
 </manifest>
